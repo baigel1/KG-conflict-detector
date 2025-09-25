@@ -149,7 +149,7 @@ export default function YextConflictDetector() {
         title: conflict.title,
         severity: conflict.severity,
         entities: conflict.entities,
-        conflicts: conflict.conflicts.map((detail) => ({
+        conflicts: conflict.conflictDetails.map((detail: any) => ({
           field: detail.field,
           conflictType: detail.conflictType,
           severity: detail.severity,

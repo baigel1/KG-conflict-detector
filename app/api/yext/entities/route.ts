@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
         }, {} as Record<string, number>);
 
         const duplicatedIds = Object.entries(idCounts)
-          .filter(([id, count]) => count > 1)
+          .filter(([id, count]) => (count as number) > 1)
           .slice(0, 5); // Show first 5 duplicates
 
         console.log("[v0] Sample duplicated entity IDs:", duplicatedIds);
@@ -270,7 +270,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Network error occurred while connecting to Yext API",
-          details: fetchError.message,
+          details:
+            fetchError instanceof Error
+              ? fetchError.message
+              : String(fetchError),
         },
         { status: 500 }
       );

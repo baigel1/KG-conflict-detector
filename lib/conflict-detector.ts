@@ -1,5 +1,8 @@
 import { YextEntity, ConflictGroup, ConflictDetail } from "@/lib/types";
 
+// Re-export types for convenience
+export type { YextEntity, ConflictGroup, ConflictDetail };
+
 // Normalize strings for comparison
 function normalizeString(str: string): string {
   return str

@@ -28,7 +28,7 @@ import {
   Users,
   FileText,
 } from "lucide-react";
-import type { ConflictGroup, ConflictDetail } from "@/lib/conflict-detector";
+import type { ConflictGroup, ConflictDetail } from "@/lib/types";
 
 interface ConflictResultsProps {
   conflicts: ConflictGroup[];
@@ -88,7 +88,7 @@ function ConflictDetailCard({ conflict }: { conflict: ConflictDetail }) {
   const [copied, setCopied] = useState(false);
 
   const copyEntityIds = () => {
-    const ids = conflict.values.map((v) => v.entityId).join(", ");
+    const ids = conflict.values.map((v: any) => v.entityId).join(", ");
     navigator.clipboard.writeText(ids);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -128,7 +128,7 @@ function ConflictDetailCard({ conflict }: { conflict: ConflictDetail }) {
         </div>
 
         <div className="grid gap-2">
-          {conflict.values.map((value, index) => (
+          {conflict.values.map((value: any, index: number) => (
             <div
               key={index}
               className="flex items-center justify-between p-2 bg-muted rounded"
@@ -201,7 +201,7 @@ function ConflictGroupCard({
                 Affected Entities
               </h4>
               <div className="grid gap-2">
-                {conflictGroup.entities.map((entity) => (
+                {conflictGroup.entities.map((entity: any) => (
                   <div
                     key={entity.id}
                     className="flex items-center justify-between p-2 bg-muted rounded"
@@ -225,9 +225,11 @@ function ConflictGroupCard({
             <div>
               <h4 className="font-medium mb-3">Conflict Details</h4>
               <div className="space-y-3">
-                {conflictGroup.conflictDetails.map((conflict, index) => (
-                  <ConflictDetailCard key={index} conflict={conflict} />
-                ))}
+                {conflictGroup.conflictDetails.map(
+                  (conflict: any, index: number) => (
+                    <ConflictDetailCard key={index} conflict={conflict} />
+                  )
+                )}
               </div>
             </div>
 
