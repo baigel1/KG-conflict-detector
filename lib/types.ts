@@ -3,6 +3,10 @@ export interface YextEntity {
   name?: string;
   description?: string;
   content?: string;
+  body?: string;
+  bodyV2?: string;
+  richTextDescription?: string;
+  richText?: string;
   answer?: string;
   mainPhone?: string;
   websiteUrl?: string;

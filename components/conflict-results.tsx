@@ -62,6 +62,20 @@ function getConflictTypeLabel(type: ConflictDetail["conflictType"]) {
       return "Data Inconsistency";
     case "faq_answer_conflict":
       return "FAQ Answer Conflicts";
+    case "body_content_conflict":
+      return "Body Content Conflicts";
+    case "content_conflict":
+      return "Content Conflicts";
+    case "description_conflict":
+      return "Description Conflicts";
+    case "body_content_contradiction":
+      return "Body Content Contradictions";
+    case "content_contradiction":
+      return "Content Contradictions";
+    case "description_contradiction":
+      return "Description Contradictions";
+    default:
+      return "Content Conflicts";
   }
 }
 
@@ -78,6 +92,10 @@ function getFieldIcon(field: string) {
     case "answer":
       return <FileText className="w-4 h-4" />;
     case "content":
+      return <FileText className="w-4 h-4" />;
+    case "body":
+      return <FileText className="w-4 h-4" />;
+    case "description":
       return <FileText className="w-4 h-4" />;
     default:
       return <FileText className="w-4 h-4" />;
